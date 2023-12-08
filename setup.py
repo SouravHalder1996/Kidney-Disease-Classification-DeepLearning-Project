@@ -8,8 +8,8 @@ __version__  = "0.0.0"
 
 REPO_NAME = "Kidney-Disease-Classification-DeepLearning-Project"
 AUTHOR_USER_NAME = "Sourav Halder"
-SRC_REPO = "Kidney-Disease-Classifier"
-AUTHOR_EMAIL = "halder.sourav1996@gmai.com"
+SRC_REPO = "Kidney_Disease_Classifier"
+AUTHOR_EMAIL = "halder.sourav1996@gmail.com"
 
 setuptools.setup(
     name = SRC_REPO,
