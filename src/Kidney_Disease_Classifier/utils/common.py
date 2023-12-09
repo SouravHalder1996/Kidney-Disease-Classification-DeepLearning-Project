@@ -1,7 +1,7 @@
 import os
 from box.exceptions import BoxValueError
 import yaml
-from Kidney_Disease_Classifier import logger
+from src.Kidney_Disease_Classifier import logger
 import json
 import joblib
 from ensure import ensure_annotations
