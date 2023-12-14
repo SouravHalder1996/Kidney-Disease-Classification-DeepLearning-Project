@@ -1,0 +1,15 @@
+artifact_uri: file:///d:/DataScience/Projects/Kidney%20Disease%20Classification/Kidney-Disease-Classification-DeepLearning-Project/mlruns/0/945dad229e5e4e81903e0b3c53637a4a/artifacts
+end_time: 1702542007830
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 945dad229e5e4e81903e0b3c53637a4a
+run_name: vaunted-skink-640
+run_uuid: 945dad229e5e4e81903e0b3c53637a4a
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1702541997933
+status: 3
+tags: []
+user_id: Sourav Halder
