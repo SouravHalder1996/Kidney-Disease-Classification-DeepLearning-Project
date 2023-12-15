@@ -42,4 +42,13 @@ pip install -r requirements.txt
 ```
 
 
+### Step-03: Export these below environment variables by running these commands inside the terminal
+
+```bash
+export MLFLOW_TRACKING_URI=<copied "MLFLOW_TRACKING_URI" from DagsHub> 
+export MLFLOW_TRACKING_USERNAME=<copied "MLFLOW_TRACKING_USERNAME" from DagsHub> 
+export MLFLOW_TRACKING_PASSWORD=<copied "MLFLOW_TRACKING_PASSWORD" from DagsHub> 
+```
+
+
 
