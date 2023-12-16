@@ -1,9 +1,9 @@
 import os
 import zipfile
 import gdown
-from src.Kidney_Disease_Classifier import logger
-from src.Kidney_Disease_Classifier.utils.common import get_size
-from src.Kidney_Disease_Classifier.entity.config_entity import DataIngestionConfig
+from Kidney_Disease_Classifier import logger
+from Kidney_Disease_Classifier.utils.common import get_size
+from Kidney_Disease_Classifier.entity.config_entity import DataIngestionConfig
 
 class DataIngestion:
     def __init__(self, config: DataIngestionConfig):

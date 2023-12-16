@@ -3,7 +3,7 @@ import urllib.request as request
 from zipfile import ZipFile
 import tensorflow as tf
 from pathlib import Path
-from src.Kidney_Disease_Classifier.entity.config_entity import PrepareBaseModelConfig
+from Kidney_Disease_Classifier.entity.config_entity import PrepareBaseModelConfig
 
 
 

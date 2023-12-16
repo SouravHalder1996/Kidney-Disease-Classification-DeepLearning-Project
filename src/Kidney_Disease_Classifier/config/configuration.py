@@ -1,10 +1,10 @@
 import os
-from src.Kidney_Disease_Classifier.constants import*
-from src.Kidney_Disease_Classifier.utils.common import read_yaml, create_directories, save_json
-from src.Kidney_Disease_Classifier.entity.config_entity import DataIngestionConfig
-from src.Kidney_Disease_Classifier.entity.config_entity import PrepareBaseModelConfig
-from src.Kidney_Disease_Classifier.entity.config_entity import TrainingConfig
-from src.Kidney_Disease_Classifier.entity.config_entity import EvaluationConfig
+from Kidney_Disease_Classifier.constants import*
+from Kidney_Disease_Classifier.utils.common import read_yaml, create_directories, save_json
+from Kidney_Disease_Classifier.entity.config_entity import DataIngestionConfig
+from Kidney_Disease_Classifier.entity.config_entity import PrepareBaseModelConfig
+from Kidney_Disease_Classifier.entity.config_entity import TrainingConfig
+from Kidney_Disease_Classifier.entity.config_entity import EvaluationConfig
 
 
 

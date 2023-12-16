@@ -4,7 +4,7 @@ from zipfile import ZipFile
 import tensorflow as tf
 from pathlib import Path
 import time
-from src.Kidney_Disease_Classifier.entity.config_entity import TrainingConfig
+from Kidney_Disease_Classifier.entity.config_entity import TrainingConfig
 
 class Training:
     def __init__(self, config: TrainingConfig):
