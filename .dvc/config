@@ -1,0 +1,4 @@
+[core]
+    remote = origin
+['remote "origin"']
+    url = https://dagshub.com/SouravHalder1996/Kidney-Disease-Classification-DeepLearning-Project.dvc

@@ -18,5 +18,8 @@ setuptools.setup(
     author_enail = AUTHOR_EMAIL,
     description = "A deep CNN based model for detecting Kidney Disease",
     long_description = long_description,
-    url = f"https://github.com/SouravHalder1996/{REPO_NAME}"
+    long_description_content = "text/markdown",
+    url = f"https://github.com/SouravHalder1996/{REPO_NAME}",
+    package_dir={"": "src"},
+    packages=setuptools.find_packages(where="src")
 )

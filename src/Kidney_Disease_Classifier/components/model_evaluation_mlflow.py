@@ -1,10 +1,16 @@
+import os
+from dotenv import load_dotenv
 import tensorflow as tf
 from pathlib import Path
 import mlflow
-import mlflow.keras
+import mlflow.tensorflow
 from urllib.parse import urlparse
+import logging
 from Kidney_Disease_Classifier.entity.config_entity import EvaluationConfig
 from Kidney_Disease_Classifier.utils.common import read_yaml, create_directories, save_json
+
+load_dotenv()
+logger = logging.getLogger(__name__)
 
 
 class Evaluation:
@@ -53,7 +59,17 @@ class Evaluation:
 
 
     def log_into_mlflow(self):
-        mlflow.set_registry_uri(self.config.mlflow_uri)
+        # mlflow.set_registry_uri(self.config.mlflow_uri)
+        mlflow.set_tracking_uri(os.getenv("MLFLOW_TRACKING_URI"))
+        os.environ["MLFLOW_TRACKING_USERNAME"] = os.getenv("MLFLOW_TRACKING_USERNAME")
+        os.environ["MLFLOW_TRACKING_PASSWORD"] = os.getenv("MLFLOW_TRACKING_PASSWORD")
+
+        try:
+            mlflow.set_experiment("Kidney-Disease-Classification")
+        except:
+            mlflow.create_experiment("Kidney-Disease-Classification")
+            mlflow.set_experiment("Kidney-Disease-Classification")
+            
         tracking_url_type_store = urlparse(mlflow.get_tracking_uri()).scheme
 
         with mlflow.start_run():
@@ -62,10 +78,10 @@ class Evaluation:
                 {"loss": self.score[0], "accuracy": self.score[1]}
             )
 
-            if tracking_url_type_store != "file":
-
-                mlflow.keras.log_model(self.model, "model", registered_model_name="VGG16Model")
-
-            else:
-
-                mlflow.keras.log_model(self.model, "model")
+            try:
+                if tracking_url_type_store != "file":
+                    mlflow.tensorflow.log_model(self.model, name="VGG16-Kidney-Disease-Classifier", registered_model_name="VGG16-Kidney-Disease-Classifier")
+                else:
+                    mlflow.tensorflow.log_model(self.model, name="VGG16-Kidney-Disease-Classifier")
+            except Exception as e:
+                logger.warning(f"Failed to log model to MLflow: {str(e)}. Metrics and parameters have been logged successfully.")

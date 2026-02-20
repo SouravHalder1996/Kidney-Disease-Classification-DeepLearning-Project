@@ -1,6 +1,8 @@
 import os
 import zipfile
 import gdown
+import tempfile
+import shutil
 from Kidney_Disease_Classifier import logger
 from Kidney_Disease_Classifier.utils.common import get_size
 from Kidney_Disease_Classifier.entity.config_entity import DataIngestionConfig
@@ -12,6 +14,7 @@ class DataIngestion:
     def download_file(self) -> str:
         '''
         Fetch data from the url
+        Download to a temporary location first to avoid DVC cache conflicts
         '''
 
         try:
@@ -22,15 +25,31 @@ class DataIngestion:
 
             file_id = dataset_url.split("/")[-2]
             prefix = 'https://drive.google.com/uc?/export=download&id='
-            gdown.download(prefix+file_id, zip_download_dir)
-
-            logger.info(f"Downloaded data from {dataset_url} into file {zip_download_dir}")
-
+            
+            # Download to a temporary file first to avoid gdown's temp file conflicts with DVC cache
+            with tempfile.NamedTemporaryFile(delete=False, suffix='.zip') as tmp_file:
+                tmp_path = tmp_file.name
+            
+            try:
+                # Download to the temp file
+                gdown.download(prefix+file_id, tmp_path, quiet=False)
+                
+                # Move the temp file to the final location, replacing if exists
+                if os.path.exists(zip_download_dir):
+                    os.remove(zip_download_dir)
+                shutil.move(tmp_path, zip_download_dir)
+                
+                logger.info(f"Downloaded data from {dataset_url} into file {zip_download_dir}")
+            except Exception as download_error:
+                # Clean up temp file if download fails
+                if os.path.exists(tmp_path):
+                    os.remove(tmp_path)
+                raise download_error
+                
         except Exception as e:
             raise e
         
-
-    def extract_zip_file(self):
+    def extract_zip_file(self) -> None:
         """
         zip_file_path: str
         Extracts the zip file into the data directory
