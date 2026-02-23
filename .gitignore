@@ -161,4 +161,10 @@ cython_debug/
 
 artifacts/
 scores.json
+notebooks/
+research/
 logs/
+
+.dvc/
+.dvcignore
+dvc.lock
