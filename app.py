@@ -20,7 +20,6 @@ class ClientApp:
 
 
 # Home Route --->
-        
 @app.route("/", methods=['GET'])
 @cross_origin()
 def home():
@@ -28,7 +27,6 @@ def home():
 
 
 # Training Route --->
-
 @app.route("/train", methods=['GET', 'POST'])
 @cross_origin()
 def trainRoute():
@@ -39,7 +37,6 @@ def trainRoute():
 
 
 # Prediction Route --->
-
 @app.route("/predict", methods=['POST'])
 @cross_origin()
 def predictRoute():
@@ -52,8 +49,4 @@ def predictRoute():
 if __name__ == '__main__':
 
     clApp = ClientApp()
-
-    #app.run(host='0.0.0.0', port=8080) #localhost
-    #app.run(host='0.0.0.0', port=80) #Azure
-
-    app.run(host='0.0.0.0', port=8080) #AWS
+    app.run(host='0.0.0.0', port=8080)

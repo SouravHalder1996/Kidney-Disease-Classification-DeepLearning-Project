@@ -167,4 +167,3 @@ logs/
 
 .dvc/
 .dvcignore
-dvc.lock
