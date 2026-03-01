@@ -167,3 +167,4 @@ logs/
 
 .dvc/
 .dvcignore
+README_assets/*.drawio
